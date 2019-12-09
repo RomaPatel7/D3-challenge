@@ -1,9 +1,8 @@
-//set svg and chart dimensions
-//set svg dimensions
+//Set table width and height
 var svgWidth = 960;
 var svgHeight = 620;
 
-//set borders in svg
+//Set table margins
 var margin = {
     top: 20,
     right: 40,
@@ -11,23 +10,23 @@ var margin = {
     left: 100
 };
 
-//calculate chart height and width
+//Set limits for margins
 var width = svgWidth - margin.right - margin.left;
 var height = svgHeight - margin.top - margin.bottom;
 
-//append a div classed chart to the scatter element
+//Append a div classed chart to the scatter element
 var chart = d3.select("#scatter").append("div").classed("chart", true);
 
-//append an svg element to the chart with appropriate height and width
+//Append an SVG element to the chart with appropriate height and width
 var svg = chart.append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);
 
-//append an svg group
+//Append an SVG group
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-//initial Parameters
+//Initial Parameters
 var chosenXAxis = "poverty";
 var chosenYAxis = "healthcare";
 
@@ -163,7 +162,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     return circlesGroup;
 }
 
-//retrieve csv data and execute everything below
+//Retrieve data from the CSV file and execute everything below
 d3.csv("./assets/data/data.csv").then(function(censusData) {
 
     console.log(censusData);
@@ -282,7 +281,7 @@ d3.csv("./assets/data/data.csv").then(function(censusData) {
         .attr("value", "obesity")
         .text("Obese (%)");
 
-    //updateToolTip function with data
+    //updateToolTip function above csv import
     var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
     //x axis labels event listener
